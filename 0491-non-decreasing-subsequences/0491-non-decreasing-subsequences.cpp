@@ -4,8 +4,8 @@ public:
         
         int n = nums.size();
         int range = 1 << n;
-        
-        vector<vector<int>> ans, local;
+         
+        set<vector<int>>local;
         for(int i = 0 ; i < range ; i++)
         {
             vector<int> tmp;
@@ -16,14 +16,9 @@ public:
                     tmp.push_back(nums[j]);
             }
             if(tmp.size() > 1)
-                local.push_back(tmp);
+                local.insert(tmp);
         }
-        sort(local.begin(), local.end());
-        for(int i = 0 ; i < local.size() ; i++)
-        {
-            if(i == 0 or local[i] != local[i-1])
-                ans.push_back(local[i]);
-        }
-        return ans;
+        
+        return vector(local.begin(), local.end());
     }
 };
