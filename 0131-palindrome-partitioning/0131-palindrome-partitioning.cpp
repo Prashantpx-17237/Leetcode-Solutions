@@ -41,7 +41,6 @@ public:
         for(int i = index + 1; i <= n ; i++)
         {
             string sub = s.substr(index, i - index);
-            //cout << sub  << "   " << check(sub) << endl ;
             if(check(sub))
             {
                 cur.push_back(i);
