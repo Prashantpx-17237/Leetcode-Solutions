@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    map<string, bool> mp;
+    unordered_map<string, bool> mp;
     
     bool can (string s)
     {
