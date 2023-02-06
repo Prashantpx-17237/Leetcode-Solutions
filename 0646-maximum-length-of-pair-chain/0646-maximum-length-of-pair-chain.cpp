@@ -13,6 +13,7 @@ public:
                 if(pairs[j][1] < pairs[i][0])
                 {
                     lis[i] = max(lis[i], 1 + lis[j]);
+                    break;
                 }
             }
         }
