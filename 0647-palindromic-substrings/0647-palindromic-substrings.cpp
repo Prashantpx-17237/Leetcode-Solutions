@@ -20,7 +20,7 @@ public:
             int k = i;
             while(k > -1 and j < n)
             {
-                if(s[k] != s[j])
+                if(s[k] != s[j] or cache[k][j] == true)
                     break;
                 cache[k][j] = true;
                 k--, j++;
