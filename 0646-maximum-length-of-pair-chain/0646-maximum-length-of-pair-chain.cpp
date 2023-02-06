@@ -11,7 +11,9 @@ public:
             for(int j = i - 1 ; j > -1; j--)
             {
                 if(pairs[j][1] < pairs[i][0])
+                {
                     lis[i] = max(lis[i], 1 + lis[j]);
+                }
             }
         }
         int ans = 1;
