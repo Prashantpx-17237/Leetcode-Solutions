@@ -31,24 +31,8 @@ public:
             while(mp2[i.first] + j++ <= require)
                 need.push_back(i.first);
         }
-        int count = 0, j = 0;
-        while(j < need.size() && need[j++] == mn)
-            count++;
-        int sz = need.size() - 2 * count;
-        int i = count;
-        j = need.size() - count - 1;
-        ans = count * 1LL * mn;
-        while(i <= j)
-        {
-            if( i == j)
-            {
-                ans += mn;
-                i++;
-            }
-            int add = min(2 * mn, need[i]);
-            i++, j--;
-            ans += add;
-        }
+        for(int i = 0 ; i < need.size() / 2 ; i++)
+            ans += min(2 * mn, need[i]);
         return ans;
     }
 };
