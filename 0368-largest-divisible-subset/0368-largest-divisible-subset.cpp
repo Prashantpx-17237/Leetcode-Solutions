@@ -18,7 +18,6 @@ public:
                 ind = i;
             }
         
-        //cout << mx << endl ;
         vector<int> ans;
         int last = nums[ind];
         for(int i = ind ; i > -1; i--)
