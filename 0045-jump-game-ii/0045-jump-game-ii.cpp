@@ -10,14 +10,10 @@ public:
         {
             if(cur >= n - 1)
                 return ans;
-            if(i <= cur)
-            {
-                maxReach = max(i + nums[i], maxReach);
-            }
-            else
+            maxReach = max(i + nums[i], maxReach);
+            if(i == cur)
             {
                 cur = maxReach;
-                maxReach = (i + nums[i]);
                 ans++;
             }
             
