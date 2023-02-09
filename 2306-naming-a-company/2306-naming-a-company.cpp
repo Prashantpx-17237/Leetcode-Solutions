@@ -4,7 +4,7 @@ public:
         
         int n = ideas.size();
        
-        vector<set<string>> hash(26);
+        vector<unordered_set<string>> hash(26);
         
         // what we need is count of other newS which do not have same start as orginals 
         // of these newS 
