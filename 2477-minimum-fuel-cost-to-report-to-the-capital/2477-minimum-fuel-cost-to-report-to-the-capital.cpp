@@ -4,7 +4,7 @@ public:
     long long dfs(int node, vector<vector<int>>& adj, vector<int>& sz, int seats, int par)
     {
         long long val = 0;
-        for(auto i : adj[node])
+        for(int i : adj[node])
         {
             if(i != par)
             {
