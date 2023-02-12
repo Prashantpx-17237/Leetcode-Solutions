@@ -4,7 +4,7 @@ public:
     long long dfs(int node, vector<vector<int>>& adj, vector<int>& sz, int seats, int par)
     {
         long long val = 0;
-        for(int i : adj[node])
+        for(auto i : adj[node])
         {
             if(i != par)
             {
@@ -17,18 +17,18 @@ public:
     }
     
     long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
+        
         int n = roads.size() + 1;
         
         vector<vector<int>> G(n);
+        vector<int> sz(n, 1);
         
         for(auto i : roads)
         {
             G[i[0]].push_back(i[1]);
             G[i[1]].push_back(i[0]);
         }
-        vector<int> sz(n, 1);
         
-        long long ans = dfs(0, G, sz, seats, -1);
-        return ans;
+        return dfs(0, G, sz, seats, -1);
     }
 };
