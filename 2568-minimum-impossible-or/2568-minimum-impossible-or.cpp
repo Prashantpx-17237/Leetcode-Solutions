@@ -3,7 +3,7 @@ public:
     int minImpossibleOR(vector<int>& nums) {
         vector<int> bit(31, 0);
         
-        unordered_set<int> st;
+        set<int> st;
         
         for(auto j : nums)
         {
