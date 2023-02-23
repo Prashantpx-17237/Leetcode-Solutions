@@ -14,8 +14,6 @@ public:
         {
             while(i < n and q[i].first <= w)
             {
-                //cout << "i = " << i << " capital = " << q[i].first ;//<< endl ;
-                //cout << " w = " << w << endl ;
                 pq.push(q[i].second);
                 i++;
             }
