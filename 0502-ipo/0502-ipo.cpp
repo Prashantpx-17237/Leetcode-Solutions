@@ -10,19 +10,15 @@ public:
         
         priority_queue<int> pq;
         int i = 0, pro = w;
-        while(k > 0)
+        while(k-- > 0)
         {
             while(i < n and q[i].first <= w)
-            {
-                pq.push(q[i].second);
-                i++;
-            }
+                pq.push(q[i++].second);
             
             if(pq.size() == 0)
                 break;
             w += pq.top();
             pq.pop();
-            k--;
         }
         return w;
     }
