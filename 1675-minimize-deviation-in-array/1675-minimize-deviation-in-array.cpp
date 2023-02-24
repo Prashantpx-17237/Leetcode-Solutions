@@ -19,8 +19,7 @@ public:
             int val = pq.top();
             pq.pop();
             val /= 2;
-            if(val < mn)
-                mn = val;
+            mn = min(mn, val);
             pq.push(val);
             ans = min(ans, pq.top() - mn);
         }
