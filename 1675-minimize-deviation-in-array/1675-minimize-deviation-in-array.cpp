@@ -1,27 +1,23 @@
 class Solution {
 public:
     int minimumDeviation(vector<int>& nums) {
-        priority_queue<int> pq;
+        set<int> st;
         
-        int mn = nums[0] * 2;
         for(auto i : nums)
         {
-            if(i & 1)
-                i *= 2;
-            pq.push(i);
-            mn = min(mn, i);
+            if(i & 1) i *= 2;
+            
+            st.insert(i);
         }
         
-        int ans = pq.top() - mn;
+        int ans = *st.rbegin() - *st.begin();
         
-        while(pq.top() % 2 == 0)
+        while(*st.rbegin() % 2 == 0)
         {
-            int val = pq.top();
-            pq.pop();
-            val /= 2;
-            mn = min(mn, val);
-            pq.push(val);
-            ans = min(ans, pq.top() - mn);
+            int val = *st.rbegin();
+            st.erase(val);
+            st.insert(val / 2);
+            ans = min(ans, *st.rbegin() - *st.begin());
         }
         return ans;
     }
