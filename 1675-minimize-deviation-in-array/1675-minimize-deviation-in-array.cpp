@@ -4,7 +4,7 @@ public:
         priority_queue<int> pq;
         
         int mn = nums[0] * 2;
-        for(auto i : nums)
+        for(auto &i : nums)
         {
             int toPush = i;
             if(i & 1)
@@ -12,6 +12,7 @@ public:
             pq.push(toPush);
             mn = min(mn, toPush);
         }
+        
         int ans = pq.top() - mn;
         
         while(pq.top() % 2 == 0)
