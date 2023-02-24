@@ -4,13 +4,12 @@ public:
         priority_queue<int> pq;
         
         int mn = nums[0] * 2;
-        for(auto &i : nums)
+        for(auto i : nums)
         {
-            int toPush = i;
             if(i & 1)
-                toPush *= 2;
-            pq.push(toPush);
-            mn = min(mn, toPush);
+                i *= 2;
+            pq.push(i);
+            mn = min(mn, i);
         }
         
         int ans = pq.top() - mn;
