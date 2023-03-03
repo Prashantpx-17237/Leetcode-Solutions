@@ -17,19 +17,21 @@ public:
         int l = 0, hash = 0, cur = 0, mod = 100001;
         for(int i = 0 ; i < m ; i++)
         {
-            hash += (needle[i] - 'a');
+            hash += (needle[i] - 'a') * 7;
+            hash %= mod;
         }
         for(int i = 0 ; i < n; i++)
         {
-            cur += (haystack[i] - 'a') ;
+            cur += (haystack[i] - 'a') * 7;
+            cur %= mod;
             if(i - l + 1 == m)
             {
-                //cout << hash << " " << cur << endl ;
                 if(hash == cur && check(haystack, needle, l))
                 {
                     return l;
                 }
-                cur -= (haystack[l++] - 'a');
+                cur -= (haystack[l++] - 'a') * 7;
+                cur = (cur + mod) % mod;
             }
         }
         return -1;
