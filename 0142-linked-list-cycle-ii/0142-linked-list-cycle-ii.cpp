@@ -9,13 +9,13 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        map<ListNode*, int> mp;
-        int pos = 0;
+        set<ListNode*> st;
+        
         while(head != NULL)
         {
-            if(mp.find(head) != mp.end())
+            if(st.count(head))
                 return head;
-            mp[head] = pos++;
+            st.insert(head);
             head = head->next;
         }
         return NULL;
