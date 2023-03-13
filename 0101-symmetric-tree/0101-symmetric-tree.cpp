@@ -16,12 +16,10 @@ public:
     {
         if(left == NULL and right == NULL)
             return true;
-        if(left == NULL or right == NULL)
-            return false;
-        if(left -> val != right -> val)
-            return false;
         
-        return (get(left -> right, right -> left) and get(left -> left, right -> right));
+        if(left and right and left -> val == right -> val)
+            return (get(left -> right, right -> left) and get(left -> left, right -> right));
+        return false;
     }
     
     bool isSymmetric(TreeNode* root) {
