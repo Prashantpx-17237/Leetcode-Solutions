@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    map<int, int> ump;
+    unordered_map<int, int> ump;
     TreeNode* get(vector<int>& in, vector<int>& po, int l, int r)
     {
         if(l > r)
@@ -38,6 +38,9 @@ public:
     }
     
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        
+        // Try to find how to divide postorder array and you are done
+        
         if(inorder.size() == 0)
             return NULL;
         int l = 0, r = inorder.size() - 1;
