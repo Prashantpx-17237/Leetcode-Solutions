@@ -1,5 +1,10 @@
 class Solution {
 public:
+    
+    long long cal(long long int n){
+        return (n * (n + 1)) / 2;
+    }
+    
     long long zeroFilledSubarray(vector<int>& nums) {
         long long ans = 0, count = 0;
         
@@ -8,11 +13,11 @@ public:
                 count++;
             else
             {
-                ans = ans + (count * (count + 1))/ 2;
+                ans += cal(count);
                 count = 0;
             }
         }
-        ans += (count * (count + 1)) / 2;
+        ans += cal(count);
         return ans;
     }
 };
