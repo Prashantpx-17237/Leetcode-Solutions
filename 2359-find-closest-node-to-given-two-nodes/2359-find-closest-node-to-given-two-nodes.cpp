@@ -9,24 +9,18 @@ public:
         vis[node] = true;
         disa[node] = dis;
         int nNode = edges[node];
-        if(nNode == -1)
+        if(nNode == -1 or vis[edges[node]])
             return;
-        if(vis[edges[node]])
-            return;
-        else
-            dfs1(edges[node], dis+1, vis, edges);
+        dfs1(edges[node], dis+1, vis, edges);
     }
     void dfs2(int node, int dis, vector<bool>& vis, vector<int>& edges)
     {
         vis[node] = true;
         disb[node] = dis;
         int nNode = edges[node];
-        if(nNode == -1)
+        if(nNode == -1 or vis[edges[node]])
             return;
-        if(vis[edges[node]])
-            return;
-        else
-            dfs2(edges[node], dis+1, vis, edges);
+        dfs2(edges[node], dis+1, vis, edges);
     }
     
     void mset(vector<bool>& vis)
