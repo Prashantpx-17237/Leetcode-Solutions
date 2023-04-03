@@ -5,13 +5,9 @@ public:
         int i = 0, j = people.size() - 1;
         int ans = 0;
         while(i <= j){
-            if(people[i] + people[j] <= limit){
-                i++, j--;
-            }
-            else
-                j--;
-            
-            ans++;
+            if(people[i] + people[j] <= limit) i++;
+                
+            j--, ans++;
         }
         return ans;
     }
