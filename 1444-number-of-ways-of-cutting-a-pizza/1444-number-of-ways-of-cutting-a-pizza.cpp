@@ -17,11 +17,11 @@ public:
     {
         int& cache = dp[x1][y1][rem];
         if(tot < rem){
-            return cache=0;
+            return 0;
         }
         if(rem == 1){
            
-            return cache = 1;
+            return 1;
         }
         if(cache != -1)
             return cache;
