@@ -5,8 +5,7 @@ public:
         int ans = 1;
         for(auto i : s){
             int bit = i-'a';
-            int bitmask = 1 << bit;
-            if((mask & bitmask) == bitmask){
+            if((mask & (1 << bit)) > 0){
                 ans++;
                 mask = 0;
             }
