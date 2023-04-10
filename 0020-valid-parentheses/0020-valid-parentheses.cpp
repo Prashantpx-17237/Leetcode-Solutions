@@ -6,10 +6,8 @@ public:
             if(i == '(' or i == '{' or i == '[')
                 st.push(i);
             else{
-                if(st.empty()) return false;
-                if(i == ')' and st.top() != '(') return false;
-                if(i == '}' and st.top() != '{') return false;
-                if(i == ']' and st.top() != '[') return false;
+                if(st.empty() or (i == ')' and st.top() != '(') or (i == '}' and st.top() != '{') or (i == ']' and st.top() != '[')) return false;
+                
                 st.pop();
             }
         }
