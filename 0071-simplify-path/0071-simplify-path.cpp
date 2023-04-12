@@ -10,7 +10,7 @@ public:
                 while(i + 1 < path.size() and path[i+1] != '/'){
                     next += path[++i];
                 }
-                //cout << "next = " << next << endl ;
+                
                 if(next == ".."){
                     ans.pop_back();
                     while(size(ans) > 0 and ans.back() != '/') ans.pop_back();
