@@ -18,14 +18,16 @@ public:
         q.push({root, 0LL});
         
         while(!q.empty()){
+            
             int sz = q.size();
-            int ind = 0, mn = 1000000;
             ans = max(ans*1ULL, q.back().second - q.front().second + 1);
+            
             for(int i = 0 ; i < sz ; i++){
                 auto pair = q.front();
                 q.pop();
                 TreeNode* node = pair.first;
                 long long int pos = pair.second;
+                
                 if(node -> left != NULL) q.push({node->left, pos * 1ULL* 2 + 0LL});
                 if(node -> right != NULL) q.push({node->right, pos * 2ULL + 1LL});
             }
