@@ -7,20 +7,21 @@ public:
         int n = group.size();
         if(level == n)
             return pro >= minP;
+        
         int p = min(pro, minP);
+        
         int& ans = dp[level][p][tot];
         
         if(ans != -1)
             return ans;
-        ans = 0;
-        
-        // take
-        if(tot + group[level] <= sz){
-            ans = (ans + get(level+1, p+profit[level], tot+group[level], group, profit, minP, sz) % mod);
-        }
         
         // not take
-        ans = (ans + get(level + 1, p, tot, group, profit, minP, sz) % mod) % mod;
+        ans = get(level + 1, p, tot, group, profit, minP, sz);
+        
+        // not take
+        if(tot + group[level] <= sz){
+            ans = (ans + get(level+1, p+profit[level], tot+group[level], group, profit,                     minP, sz)) % mod;
+        }
         
         return ans;
     }
