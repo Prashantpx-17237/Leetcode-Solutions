@@ -5,9 +5,8 @@ public:
     
     int get(int level, int pro, int tot, vector<int>& group, vector<int>& profit, int minP, int sz){
         int n = group.size();
-        if(level == n and pro >= minP)
-            return 1;
-        if(level >= n) return 0;
+        if(level == n)
+            return pro >= minP;
         int p = min(pro, minP);
         int& ans = dp[level][p][tot];
         
