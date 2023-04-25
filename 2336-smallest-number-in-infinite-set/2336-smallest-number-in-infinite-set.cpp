@@ -14,8 +14,7 @@ public:
     }
     
     void addBack(int num) {
-        if(!st.count(num))
-            st.insert(num);
+        st.insert(num);
     }
 };
 
