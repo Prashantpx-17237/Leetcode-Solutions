@@ -17,9 +17,9 @@ public:
     }
         
         int find(int u){
-            if(par[u] == u)
-                return u;
-            return par[u] = find(par[u]);
+            if(par[u] != u)
+                par[u] = find(par[u]);
+            return par[u];
         }
         
         void merge(int u, int v){
