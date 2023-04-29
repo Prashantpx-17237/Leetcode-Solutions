@@ -27,6 +27,7 @@ class DSU{
     }
 };
 
+/* What to do when we don't have all the queries at once and are getting one at a time? */
 
 bool comp(vector<int>& a, vector<int>& b){
     return a[2] < b[2];
