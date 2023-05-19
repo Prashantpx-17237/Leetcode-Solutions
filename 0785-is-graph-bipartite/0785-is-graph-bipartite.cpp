@@ -1,17 +1,18 @@
 class Solution {
 public:
     bool dfs(int node, vector<vector<int>>& graph, vector<int>& color){
-        bool ok = true;
+        
         for(auto v : graph[node]){
             if(color[v] == color[node])
                 return false;
             if(color[v] == -1){
                 color[v] = 1 - color[node];
             
-                ok &= dfs(v, graph, color);
+               if(!dfs(v, graph, color))
+                   return false;
             }
         }
-        return ok;
+        return true;
     }
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
