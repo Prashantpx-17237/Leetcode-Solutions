@@ -1,11 +1,6 @@
 class Solution {
 public:
-    void print(queue<pair<int, int>> q){
-        while(!q.empty()){
-            cout <<  q.front().first <<" = x, y = "<< q.front().second << " / " << endl;
-            q.pop();
-        }
-    }
+    
     int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
         int n = grid.size();
         if(grid[0][0] == 1) return -1;
