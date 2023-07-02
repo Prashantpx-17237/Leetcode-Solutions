@@ -1,22 +1,37 @@
 class Solution {
 public:
-    int maximumRequests(int n, vector<vector<int>>& requests) {
-        int m = requests.size();
-        int ans = 0;
-        for(int i = 0 ; i < (1 << m) ; i++){
-            vector<int> count(n, 0);
-            int bitc = __builtin_popcount(i);
-            if(bitc <= ans) continue;
-            for(int j = 0 ; j < m; j++){
-                if(i & (1 << j)){
-                    count[requests[j][0]]--;
-                    count[requests[j][1]]++;
+    int answer = 0;
+
+    void maxRequest(vector<vector<int>>& requests, vector<int>& indegree, int n, int index, int count) {
+        if (index == requests.size()) {
+            // Check if all buildings have an in-degree of 0.
+            for (int i = 0; i < n; i++) {
+                if (indegree[i]) {
+                    return;
                 }
             }
-            int ok = 0;
-            for(int j = 0; j < n; j++) ok += (count[j] != 0);
-            if(ok == 0) ans = max(ans, bitc);
+            
+            answer = max(answer, count);
+            return;
         }
-        return ans;
+        
+        // Consider this request, increment and decrement for the buildings involved.
+        indegree[requests[index][0]]--;
+        indegree[requests[index][1]]++;
+        // Move on to the next request and also increment the count of requests.
+        maxRequest(requests, indegree, n, index + 1, count + 1);
+        // Backtrack to the previous values to move back to the original state before the second recursion.
+        indegree[requests[index][0]]++;
+        indegree[requests[index][1]]--;
+        
+        // Ignore this request and move on to the next request without incrementing the count.
+        maxRequest(requests, indegree, n, index + 1, count);
+    }
+    
+    int maximumRequests(int n, vector<vector<int>>& requests) {
+        vector<int> indegree(n, 0);
+        maxRequest(requests, indegree, n, 0, 0);
+        
+        return answer;
     }
 };
