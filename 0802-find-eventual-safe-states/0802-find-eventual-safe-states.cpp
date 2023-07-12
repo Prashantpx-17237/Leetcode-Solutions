@@ -4,15 +4,17 @@ public:
     bool dfs(int node, vector<vector<int>>& adj, set<int>& ans, vector<int>& vis){
         
         bool ok = true;
-        if(isGood[node] == 2) return true;
+        //if(isGood[node] == 2) return true;
         if(isGood[node] == 0) 
             isGood[node] = 1;
+        
         vis[node] = 1;
         for(auto u : adj[node]){
+            
             if(vis[u] == 1) ok = false;
             if(isGood[u] != 0) ok = ok & (isGood[u] == 2);
             if(!ok) break;
-            else ok = ok & dfs(u, adj, ans, vis);
+            else if(vis[u] == 0) ok = ok & dfs(u, adj, ans, vis);
             
         }
         if(ok == true and ans.count(node) == 0) {ans.insert(node); isGood[node] = 2;}
