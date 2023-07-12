@@ -5,11 +5,12 @@ public:
         
         bool ok = true;
         if(isGood[node] == 2) return true;
+        if(isGood[node] == 0) 
+            isGood[node] = 1;
         vis[node] = 1;
-        isGood[node] = 1;
         for(auto u : adj[node]){
             if(vis[u] == 1) ok = false;
-            if(isGood[u] != -1) ok = ok & (isGood[u] == 2);
+            if(isGood[u] != 0) ok = ok & (isGood[u] == 2);
             if(!ok) break;
             else ok = ok & dfs(u, adj, ans, vis);
             
@@ -24,14 +25,17 @@ public:
         // vector<vector<int>> adj(n);
         // for(auto i : graph) adj[i[0]].push_back(i[1]);
         vector<int> vis(n, 0);
-        isGood.resize(n, -1);
+        isGood.resize(n, 0);
         set<int> ans;
         
         for(int i = 0 ; i < n ; i++)
-            if(graph[i].size() == 0) {isGood[i] = 2; ans.insert(i);}
+            if(graph[i].size() == 0) {isGood[i] = 2; ans.insert(i); vis[i] = 2;}
 
         for(int i = 0 ; i < n ; i++){
-            if(vis[i] == 0) dfs(i, graph, ans, vis);
+            if(vis[i] == 0) {
+                //cout << i << " " << vis[i] << " " << vis[i+1] << endl;
+                dfs(i, graph, ans, vis);
+            }
         }
         vector<int> ret(ans.begin(), ans.end());
         return ret;
