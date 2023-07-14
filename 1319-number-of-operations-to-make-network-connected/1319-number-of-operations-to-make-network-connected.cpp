@@ -1,37 +1,47 @@
-class Solution {
-public:
+class DSU{
+    private:
+    vector<int> par, size;
+    int noc;
+    public:
+    DSU(int n){
+        noc = n;
+        par.resize(n);
+        size.resize(n, 0);
+        for(int i = 0 ; i < n ; i++) par[i] = i;
+    }
     
-    void dfs(vector<vector<int>>& adj, vector<bool>& vis, int node){
-        vis[node] = true;
-        for(auto i : adj[node]){
-            if(!vis[i]){
-                dfs(adj, vis, i);
-            }
-        }
+    int find(int a){
+        if(par[a] == a) return a;
+        
+        return par[a] = find(par[a]);
+    }
+    
+    void merge(int a, int b){
+        int u = find(a), v = find(b);
+        if(u == v) return;
+        noc--;
+        if(size[u] > size[v]) swap(u, v);
+        par[u] = v;
+        size[v] += (size[u] == size[v]);
         return;
     }
+    
+    int getNoc()
+    {
+        return noc;
+    }
+};
+
+class Solution {
+public:
     int makeConnected(int n, vector<vector<int>>& connections) {
         
-        int count = 0;
-        vector<vector<int>> adj(n);
-        for(auto i : connections){
-            count++;
-            adj[i[0]].push_back(i[1]);
-            adj[i[1]].push_back(i[0]);
-        }
-        if(count < n - 1)
-            return -1;
-        vector<bool> vis(n, false);
-        int noc = 0;
-        for(int i = 0 ; i < n ; i++){
-            
-            if(!vis[i]){
-                
-                vis[i] = true;
-                dfs(adj, vis, i);
-                noc++;
-            }
-        }
-        return noc - 1;
+        if(n -1 > connections.size()) return -1;
+        
+        DSU dsu(n);
+        
+        for(auto i : connections) dsu.merge(i[0], i[1]);
+        
+        return dsu.getNoc() - 1;
     }
 };
