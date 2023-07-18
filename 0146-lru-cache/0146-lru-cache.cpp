@@ -1,6 +1,6 @@
 class LRUCache {
 public:
-    map<int, pair<int, int>> mp;
+    unordered_map<int, pair<int, int>> mp;
     int time, cap;
     // time, key
     // priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; 
